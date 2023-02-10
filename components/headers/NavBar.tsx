@@ -66,7 +66,7 @@ const MediumScreenNav = () => {
 }
 
 const MobileScreenNav = () => {
-    const [isOpen, toggleNav] = useState(true);
+    const [isOpen, toggleNav] = useState(false);
 
 
     return (
