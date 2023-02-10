@@ -5,9 +5,9 @@ type Routes = {
 
 export const navRoutes: Array<Routes> = [
     {name: 'Home', path: '/'},
-    {name: 'Vote', path: '/'},
-    {name: 'Commands', path: '/'},
-    {name: 'Support', path: '/'},
-    {name: 'Invite', path: '/'},
-    {name: 'Docs', path: '/'},
+    {name: 'Vote', path: '/vote'},
+    {name: 'Commands', path: '/commands'},
+    {name: 'Support', path: '/support'},
+    {name: 'Invite', path: '/invite'},
+    {name: 'Docs', path: '/docs'},
 ]

@@ -1,9 +1,10 @@
+import Hero from "@/components/headers/Hero";
 
 
 const HomePage = () => {
   return (
     <>
-      Okay
+      <Hero/>
     </>
   )
 }
