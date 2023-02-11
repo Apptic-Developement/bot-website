@@ -11,19 +11,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'primary-blurple': '#5865f2',
-        'primary-alt-blurple': '#4a56d9',
-        'ancent': '#4f545c',
-        'ternary': '#202225',
-      },
-      textColor: {
-        link: '#00b0f4',
-        primary: '#fff'
-      },
-      backgroundColor: {
-        'primary': '#15171e',
-        'secondary': '#262a33',
-        'secondary-alt': '#15171d',
+        'light-black': '#18181A',
+        'dark-black': '#111113',
+        'dark-blurple': '#4a56d9',
+        'light-blurple': '#5865f2',
+        'grey': '#D4D3D8',
       },
       padding: {
         'container': '16'
