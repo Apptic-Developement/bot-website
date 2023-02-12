@@ -16,12 +16,14 @@ module.exports = {
         'dark-blurple': '#4a56d9',
         'light-blurple': '#5865f2',
         'grey': '#D4D3D8',
+        'ancent-black': '#1F1F27',
       },
       padding: {
         'container': '16'
       },
       fontFamily: {
         'poppins': ['Poppins', 'sans-serif'],
+        'Kanit': ['Kanit', 'sans-serif'],
       }
     },
   },

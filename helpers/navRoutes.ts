@@ -1,3 +1,6 @@
+import { ReactElement } from "react";
+import { IconType } from "react-icons";
+
 type Routes = {
     name: string;
     path: string;
@@ -11,3 +14,4 @@ export const navRoutes: Array<Routes> = [
     {name: 'Invite', path: '/invite'},
     {name: 'Docs', path: '/docs'},
 ]
+

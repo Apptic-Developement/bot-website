@@ -1,71 +1,14 @@
+// MobileNavBar
 "use client";
-
-import Link from 'next/link';
-import { navRoutes } from '@/helpers/navRoutes';
-import { CgMenuRight } from 'react-icons/cg';
-import { AiOutlineClose } from 'react-icons/ai';
-import {  useState } from 'react';
+import { navRoutes } from "@/helpers/navRoutes";
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+import { AiOutlineClose } from "react-icons/ai";
+import { CgMenuRight } from "react-icons/cg";
 import { motion } from "framer-motion";
-import Image from 'next/image';
-import { ButtonPrimary } from '@/components/Buttons';
-import { FaDiscord } from 'react-icons/fa';
+import { FaDiscord } from "react-icons/fa";
 
-
-const NavBar = () => {
-    return (
-        <>
-            <MediumScreenNav />
-            <MobileScreenNav />
-        </>
-
-    )
-}
-export default NavBar;
-
-const MediumScreenNav = () => {
-
-    return (
-        <div className="bg-light-black">
-            <nav className="w-full container py-4 h11 mx-auto md:flex hidden items-center justify-center">
-
-                <div className="flex justify-between items-center px-4 w-full my-auto">
-                    {/* Left Content */}
-                    <div className="flex gap-5 items-center">
-                        {/* Branding */}
-                        <div className='flex items-center justify-center'>
-                            <Image src='/logo/logo.png' width={70} height={70} alt={'Logo'} />
-                            {/* <h1 className="font-bold text-2xl">Apptic</h1> */}
-                        </div>
-
-                        {/* Links */}
-                        <ul className='flex gap-3 text-gray-500'>
-                            {
-                                navRoutes.map((route, index) => {
-                                    return <li
-                                        className={`hover:!border-b-4 border-b-transparent hover:!border-light-blurple`}
-                                        key={index}
-                                    ><Link href={route.path}>{route.name}</Link></li>
-                                })
-                            }
-                        </ul>
-
-                    </div>
-
-
-
-                    {/* Right Content */}
-                    {/* <div className='mt-6 text-xs flex self-center justify-self-center items-center'> */}
-                    <ButtonPrimary name={'Login'} callback={() => { }} icon={<FaDiscord />} />
-                    {/* </div> */}
-                </div>
-
-
-            </nav>
-        </div>
-
-
-    )
-}
 
 const MobileScreenNav = () => {
     const [isOpen, toggleNav] = useState(false);
@@ -111,7 +54,14 @@ const MobileScreenNav = () => {
                                     </ul>
 
                                     <div className='mt-6'>
-                                        <ButtonPrimary name={'Login'} callback={() => { }} icon={<FaDiscord />} />
+                                        <div className="px-4 py-2 gap-2 bg-light-blurple rounded-md hover:bg-dark-blurple hover:opacity-95 transition-all duration-300 flex items-center justify-center">
+                                            <div className="text-xl">
+                                                <FaDiscord/>
+                                            </div>
+                                            <button onClick={() => {alert('Not Implimented!')}} className='font-semibold'>
+                                                Login
+                                            </button>
+                                        </div>
 
                                     </div>
                                 </motion.aside>
@@ -125,3 +75,5 @@ const MobileScreenNav = () => {
         </div>
     )
 }
+
+export default MobileScreenNav;
