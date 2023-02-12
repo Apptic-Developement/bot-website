@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { navRoutes } from '@/helpers/navRoutes';
 import { CgMenuRight } from 'react-icons/cg';
 import { AiOutlineClose } from 'react-icons/ai';
-import { useState } from 'react';
+import {  useState } from 'react';
 import { motion } from "framer-motion";
 import Image from 'next/image';
 import { ButtonPrimary } from '@/components/Buttons';
@@ -42,7 +42,7 @@ const MediumScreenNav = () => {
                             {
                                 navRoutes.map((route, index) => {
                                     return <li
-                                        className={`hover:!border-b-4 border-b-transparent hover:!border-light-blurple ${typeof window !== undefined && window.location.pathname == route.path ? '!border-light-blurple !border-b-4' : null}`}
+                                        className={`hover:!border-b-4 border-b-transparent hover:!border-light-blurple`}
                                         key={index}
                                     ><Link href={route.path}>{route.name}</Link></li>
                                 })
