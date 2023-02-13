@@ -49,8 +49,8 @@ const MediumNavBar = () => {
 
 
                     {/* Right Content */}
-                    {/* <LoginButton/> */}
-                    <Profile />
+                    <LoginButton/>
+                    {/* <Profile /> */}
 
                 </div>
 

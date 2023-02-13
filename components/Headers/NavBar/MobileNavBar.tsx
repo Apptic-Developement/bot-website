@@ -1,13 +1,14 @@
-// MobileNavBar
 "use client";
 import { navRoutes } from "@/helpers/navRoutes";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { AiOutlineClose } from "react-icons/ai";
+import { AiFillCaretDown, AiOutlineClose } from "react-icons/ai";
 import { CgMenuRight } from "react-icons/cg";
 import { motion } from "framer-motion";
-import { FaDiscord } from "react-icons/fa";
+import { FaDiscord, FaUser } from "react-icons/fa";
+import { IoMdExit } from "react-icons/io";
+import { FiServer } from "react-icons/fi";
 
 
 const MobileScreenNav = () => {
@@ -53,16 +54,10 @@ const MobileScreenNav = () => {
                                         }
                                     </ul>
 
-                                    <div className='mt-6'>
-                                        <div className="px-4 py-2 gap-2 bg-light-blurple rounded-md hover:bg-dark-blurple hover:opacity-95 transition-all duration-300 flex items-center justify-center">
-                                            <div className="text-xl">
-                                                <FaDiscord/>
-                                            </div>
-                                            <button onClick={() => {alert('Not Implimented!')}} className='font-semibold'>
-                                                Login
-                                            </button>
-                                        </div>
-
+                                    {/* Login And Avatar */}
+                                    {/* <LognButton/> */}
+                                    <div className="flex w-full">
+                                        <Profile />
                                     </div>
                                 </motion.aside>
                             )
@@ -77,3 +72,54 @@ const MobileScreenNav = () => {
 }
 
 export default MobileScreenNav;
+
+
+const LognButton = () => {
+    return (
+        <div className='mt-6'>
+            <div className="px-4 py-2 gap-2 bg-light-blurple rounded-md hover:bg-dark-blurple hover:opacity-95 transition-all duration-300 flex items-center justify-center">
+                <div className="text-xl">
+                    <FaDiscord />
+                </div>
+                <button onClick={() => { alert('Not Implimented!') }} className='font-semibold'>
+                    Login
+                </button>
+            </div>
+
+        </div>
+    )
+}
+
+const Profile = () => {
+    const [isOpen, toggleProfile] = useState(false);
+    const hoverLinks = "hover:opacity-60 duration-300 transation-all"
+    return (
+        <div className="relative mx-auto">
+
+            <button className="relative  px-4 py-3 rounded-md flex items-center gap-2 font-Kanit" onClick={() => toggleProfile(!isOpen)}>
+                <p className="font-semibold">Pranoy#0140</p>
+                <AiFillCaretDown className={`${isOpen ? null : 'rotate-180'}`} />
+            </button>
+
+            {
+                isOpen ? (
+                    <ul className="absolute bg-ancent-black shadow-lg flex flex-col items-start px-3 py-2 w-full gap-2">
+                        <li className={`flex items-center gap-2 justify-center`}>
+                            <FaUser />
+                            <Link href={'/'} className={hoverLinks}>Profile</Link>
+                        </li>
+                        <li className={`flex items-center gap-2 justify-center`}>
+                            <FiServer className="text-white" />
+                            <Link href={'/'} className={hoverLinks}>Servers</Link>
+                        </li>
+                        <li className={`flex items-center gap-2 justify-center text-red-700`}>
+                            <IoMdExit />
+                            <Link href={'/'} className={hoverLinks}>Logout</Link>
+                        </li>
+                    </ul>
+                ) : null
+            }
+
+        </div>
+    )
+}
