@@ -15,7 +15,8 @@ import AppticLogo from '/src/assets/logo/logo.png';
 const MobileScreenNav = () => {
     const [isOpen, toggleNav] = useState(false);
 
-
+    const nonActiveCss = "hover:bg-ancent-black p-1 rounded-md"
+    const ActiveCss = "bg-dark-blurple p-1 rounded-md"
     return (
         <nav className="w-full container py-4 h11 mx-auto md:hidden flex items-center justify-center">
 
@@ -47,9 +48,12 @@ const MobileScreenNav = () => {
                                 <ul className='mt-6 flex flex-col gap-3'>
                                     {
                                         navRoutes.map((route, index) => {
-                                            return <li
-                                                key={index}
-                                            ><NavLink to={route.path}>{route.name}</NavLink></li>
+                                            return <NavLink
+                                            onClick={() => {isOpen ? toggleNav(false) : null }}
+                                            to={route.path}
+                                            key={index}
+                                            className={(navData) => (navData.isActive ? ActiveCss : nonActiveCss)}
+                                            >{route.name}</NavLink>
                                         })
                                     }
                                 </ul>
