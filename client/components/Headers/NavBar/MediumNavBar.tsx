@@ -1,24 +1,21 @@
-"use client";
-import { navRoutes } from "@/helpers/navRoutes";
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import React from 'react';
+import { navRoutes } from "../../../helpers/navRoutes";
+import { useState } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
 import { FaDiscord, FaUser } from "react-icons/fa";
 import { FiServer } from 'react-icons/fi';
 import { IoMdExit } from 'react-icons/io';
+import { NavLink } from 'react-router-dom';
+import AppticLogo from '/src/assets/logo/logo.png';
+
 
 
 const MediumNavBar = () => {
-    const [canRender, setRender] = useState(false);
-    useEffect(() => {
-        if (typeof window !== "undefined") {
-            setRender(true);
-        }
-    })
-    if (!canRender) { return }
+    const ActiveCss = `hover:!border-b-4 border-b-transparent hover:!border-light-blurple !border-light-blurple !border-b-4 duration-300 transation-all`;
+    const nonActiveCss = `hover:!border-b-4 border-b-transparent hover:!border-light-blurple duration-300 transation-all`;
+
     return (
-        <div className="bg-light-black">
+        <>
             <nav className="w-full container py-4 h11 mx-auto md:flex hidden items-center justify-center">
 
                 <div className="flex justify-between items-center px-4 w-full my-auto">
@@ -26,7 +23,7 @@ const MediumNavBar = () => {
                     <div className="flex gap-5 items-center">
                         {/* Branding */}
                         <div className='flex items-center justify-center'>
-                            <Image src='/logo/logo.png' width={70} height={70} alt={'Logo'} />
+                            <img src={AppticLogo} width={70} height={70} alt={'Logo'} />
                             {/* <h1 className="font-bold text-2xl">Apptic</h1> */}
                         </div>
 
@@ -34,12 +31,14 @@ const MediumNavBar = () => {
                         <ul className='flex gap-3 text-gray-500'>
                             {
                                 navRoutes.map((route, index) => {
-                                    return <li
-                                        className={`
-                                        hover:!border-b-4 border-b-transparent hover:!border-light-blurple
-                                        ${window && window.location.pathname == route.path ? '!border-light-blurple !border-b-4' : null}`}
-                                        key={index}
-                                    ><Link href={route.path}>{route.name}</Link></li>
+                                    return (
+                                        <NavLink
+                                            to={route.path}
+                                            className={(navData) => (navData.isActive ? ActiveCss : nonActiveCss)}
+
+                                            key={index}
+                                        >{route.name}
+                                        </NavLink>)
                                 })
                             }
                         </ul>
@@ -49,15 +48,16 @@ const MediumNavBar = () => {
 
 
                     {/* Right Content */}
-                    <LoginButton/>
+                    <LoginButton />
                     {/* <Profile /> */}
 
                 </div>
 
 
             </nav>
-        </div>
 
+
+        </>
 
     )
 }
@@ -93,15 +93,15 @@ const Profile = () => {
                     <ul className="absolute bg-ancent-black shadow-lg flex flex-col items-start px-3 py-2 w-full gap-2">
                         <li className={`flex items-center gap-2 justify-center`}>
                             <FaUser />
-                            <Link href={'/'} className={hoverLinks}>Profile</Link>
+                            <NavLink to={'/'} className={hoverLinks}>Profile</NavLink>
                         </li>
                         <li className={`flex items-center gap-2 justify-center`}>
                             <FiServer className="text-white" />
-                            <Link href={'/'} className={hoverLinks}>Servers</Link>
+                            <NavLink to={'/'} className={hoverLinks}>Servers</NavLink>
                         </li>
                         <li className={`flex items-center gap-2 justify-center text-red-700`}>
                             <IoMdExit />
-                            <Link href={'/'} className={hoverLinks}>Logout</Link>
+                            <NavLink to={'/'} className={hoverLinks}>Logout</NavLink>
                         </li>
                     </ul>
                 ) : null

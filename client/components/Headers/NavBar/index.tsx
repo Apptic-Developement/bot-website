@@ -1,4 +1,3 @@
-"use client";
 import MediumNavBar from './MediumNavBar';
 import MobileScreenNav from './MobileNavBar';
 const NavBar = () => {
