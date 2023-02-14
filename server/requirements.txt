@@ -1,0 +1,2 @@
+fastapi[all]
+python-socketio>=4.6.0

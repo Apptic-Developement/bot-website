@@ -4,7 +4,9 @@ type Props = {}
 
 function Loading({}: Props) {
   return (
+    <div className='flex'>
     <span className="loader"></span>
+    </div>
   )
 }
 
