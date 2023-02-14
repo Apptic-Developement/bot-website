@@ -1,6 +1,7 @@
-from typing import Union
+from typing import Literal, Union
 from httpx import AsyncClient
 from models import ExchangeCode
+from models import User
 import configs
 
 __all__ = (
@@ -18,6 +19,17 @@ class Client:
         self.client_id = configs.CLIENT_ID
         self.client_secret = configs.CLIENT_SECRET
         self.redirect_uri = configs.REDIRECT_URL
+        self.user_endpoint = configs.USER_ENDPOINT
+
+    async def request(self, route: str, token: str, method: Literal['GET', 'POST']):
+        headers = {"Authorization": f"Bearer {token}"}
+        if method == 'GET':
+            async with self.session() as session:
+                res = await session.get(self.api_endpoint+route)
+                if res.status_code != 200:
+                    return None
+                return res.json()
+            
 
     async def get_access_token(self, code: str) -> Union[ExchangeCode, None]:
         data = {
@@ -36,3 +48,8 @@ class Client:
                 print(res.json())
                 return None
         return ExchangeCode(**res.json())
+
+    async def fetch_user(self, access_token: str) -> Union[User, None]:
+        user = await self.request(self.user_endpoint, access_token, 'GET')
+        if not user: return None
+        return User(**user)

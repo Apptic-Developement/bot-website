@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { navRoutes } from "../../../helpers/navRoutes";
 import { useState } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
@@ -7,13 +7,13 @@ import { FiServer } from 'react-icons/fi';
 import { IoMdExit } from 'react-icons/io';
 import { NavLink } from 'react-router-dom';
 import AppticLogo from '/src/assets/logo/logo.png';
-
-
+import { AuthContext } from '../../../src/contexts/authContext';
+import config from '../../../config.json';
 
 const MediumNavBar = () => {
     const ActiveCss = `hover:!border-b-4 border-b-transparent hover:!border-light-blurple !border-light-blurple !border-b-4 duration-300 transation-all`;
     const nonActiveCss = `hover:!border-b-4 border-b-transparent hover:!border-light-blurple duration-300 transation-all`;
-
+    const { accessToken } = useContext(AuthContext);
     return (
         <>
             <nav className="w-full container py-4 h11 mx-auto md:flex hidden items-center justify-center">
@@ -48,8 +48,13 @@ const MediumNavBar = () => {
 
 
                     {/* Right Content */}
-                    <LoginButton />
-                    {/* <Profile /> */}
+                    {
+                        accessToken ? (
+                            <Profile />
+                        ) : <LoginButton />
+
+                    }
+
 
                 </div>
 
@@ -71,7 +76,7 @@ const LoginButton = () => {
             <div className="text-xl">
                 <FaDiscord />
             </div>
-            <button onClick={() => { alert('Not Implimented!') }} className='font-semibold'>
+            <button onClick={() => { window.location.href =  config.LOGIN_URL}} className='font-semibold'>
                 Login
             </button>
         </div>

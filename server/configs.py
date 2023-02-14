@@ -7,6 +7,7 @@ BASE_AUTH_URL = "https://discord.com/oauth2/authorize"
 TOKEN_URL = "/oauth2/token"
 TOKEN_REVOKE_URL = "/oauth2/token/revoke"
 API_ENDPOINT = 'https://discord.com/api/v10'
+USER_ENDPOINT = "/users/@me"
 
 ##############################
 #                            #
