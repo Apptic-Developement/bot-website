@@ -5,6 +5,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './views/Home';
 import Commands from './views/Commands';
+import Callback from './views/Auth/callback';
 
 const routes = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const routes = createBrowserRouter([
       {
         path: '/commands',
         element: <Commands />
+      },
+      {
+        path: '/callback',
+        element: <Callback />
       }
     ]
   }
