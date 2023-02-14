@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './views/Home';
 import Commands from './views/Commands';
 import Callback from './views/Auth/callback';
+import Login from './views/Auth/login';
 
 const routes = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const routes = createBrowserRouter([
       {
         path: '/callback',
         element: <Callback />
+      },
+      {
+        path: '/login',
+        element: <Login />
       }
     ]
   }

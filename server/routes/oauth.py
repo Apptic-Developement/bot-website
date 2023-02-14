@@ -1,9 +1,13 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Request
+from oauth import Client
 
 
 router = APIRouter()
+client = Client() # type: ignore
 
-@router.get('/login')
-async def login_route():
-    return "Login kr"
+@router.post('/callback')
+async def callback_route(code: str):
+    data = await client.get_access_token(code)
+    if data is None: return "No Data"
+    return data
 
