@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
 from routes import (
     oauth
 )
@@ -22,12 +23,18 @@ async def home():
 
 @app.exception_handler(Unauthorized)
 async def unauthorized_Error(req: Request, exc: Unauthorized):
-    return {"message": 'Unauthorized', "code": 401}
+    return JSONResponse(
+        status_code=401,
+        content={"message": f"Unauthorized!"},
+    )
 
 
 @app.exception_handler(InvalidExchangeCode)
 async def invalid_Exc_Error(req: Request, exc: InvalidExchangeCode):
-    return {"message": 'Invalid exchange code.', "code": 501}
+    return JSONResponse(
+        status_code=501,
+        content={"message": f"Invalid Exchange Code!"},
+    )
 
 
 app.include_router(router=oauth.router)
