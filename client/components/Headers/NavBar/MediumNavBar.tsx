@@ -9,11 +9,12 @@ import { NavLink } from 'react-router-dom';
 import AppticLogo from '/src/assets/logo/logo.png';
 import { AuthContext } from '../../../src/contexts/authContext';
 import config from '../../../config.json';
+import getLoginUrl from '../../../helpers/getLoginUrl';
 
 const MediumNavBar = () => {
     const ActiveCss = `hover:!border-b-4 border-b-transparent hover:!border-light-blurple !border-light-blurple !border-b-4 duration-300 transation-all`;
     const nonActiveCss = `hover:!border-b-4 border-b-transparent hover:!border-light-blurple duration-300 transation-all`;
-    const { accessToken } = useContext(AuthContext);
+    const { accessToken, user } = useContext(AuthContext);
     return (
         <>
             <nav className="w-full container py-4 h11 mx-auto md:flex hidden items-center justify-center">
@@ -49,8 +50,8 @@ const MediumNavBar = () => {
 
                     {/* Right Content */}
                     {
-                        accessToken ? (
-                            <Profile />
+                        accessToken && user  ? (
+                            <Profile/>
                         ) : <LoginButton />
 
                     }
@@ -72,24 +73,27 @@ export default MediumNavBar;
 
 const LoginButton = () => {
     return (
-        <div className="px-4 py-2 gap-2 bg-light-blurple rounded-md hover:bg-dark-blurple hover:opacity-95 transition-all duration-300 flex items-center justify-center">
+        <div onClick={() => { window.location.href =  getLoginUrl()}} className="px-4 py-2 gap-2 bg-light-blurple rounded-md hover:bg-dark-blurple hover:opacity-95 transition-all duration-300 flex items-center justify-center">
             <div className="text-xl">
                 <FaDiscord />
             </div>
-            <button onClick={() => { window.location.href =  config.LOGIN_URL}} className='font-semibold'>
+            <strong className='font-semibold'>
                 Login
-            </button>
+            </strong>
         </div>
     )
 }
+
+
 const Profile = () => {
     const [isOpen, toggleProfile] = useState(false);
-    const hoverLinks = "hover:opacity-60 duration-300 transation-all"
+    const hoverLinks = "hover:opacity-60 duration-300 transation-all";
+    const { user } = useContext(AuthContext);
     return (
         <div className="relative">
 
             <button className="relative  px-4 py-3 rounded-md flex items-center gap-2 font-Kanit" onClick={() => toggleProfile(!isOpen)}>
-                <p className="font-semibold">Pranoy#0140</p>
+                <p className="font-semibold">{user?.username}#{user?.discriminator}</p>
                 <AiFillCaretDown className={`${isOpen ? null : 'rotate-180'}`} />
             </button>
 
@@ -98,7 +102,7 @@ const Profile = () => {
                     <ul className="absolute bg-ancent-black shadow-lg flex flex-col items-start px-3 py-2 w-full gap-2">
                         <li className={`flex items-center gap-2 justify-center`}>
                             <FaUser />
-                            <NavLink to={'/'} className={hoverLinks}>Profile</NavLink>
+                            <NavLink to={'/profile'} className={hoverLinks}>Profile</NavLink>
                         </li>
                         <li className={`flex items-center gap-2 justify-center`}>
                             <FiServer className="text-white" />
@@ -106,7 +110,7 @@ const Profile = () => {
                         </li>
                         <li className={`flex items-center gap-2 justify-center text-red-700`}>
                             <IoMdExit />
-                            <NavLink to={'/'} className={hoverLinks}>Logout</NavLink>
+                            <NavLink to={'/logout'} className={hoverLinks}>Logout</NavLink>
                         </li>
                     </ul>
                 ) : null

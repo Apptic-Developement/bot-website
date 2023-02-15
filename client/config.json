@@ -1,4 +1,5 @@
 {
-    "LOGIN_URL": "https://discord.com/api/oauth2/authorize?client_id=1070374441135116310&redirect_uri=https%3A%2F%2F5173-appticdevelopem-website-jlqpxm29lfg.ws-us86.gitpod.io%2Fcallback&response_type=code&scope=identify%20guilds",
-    "API_URL": "https://8000-appticdevelopem-website-jlqpxm29lfg.ws-us86.gitpod.io"
+    "CLIENT_ID": "1070374441135116310",
+    "REDIRECT_URI": "https://5173-appticdevelopem-website-jlqpxm29lfg.ws-us87.gitpod.io/callback",
+    "API_URL": "https://8000-appticdevelopem-website-jlqpxm29lfg.ws-us87.gitpod.io"
 }

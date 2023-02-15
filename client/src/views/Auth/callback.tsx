@@ -3,7 +3,7 @@ import Loading from '../../../components/Loading/Loading'
 import { useLocation } from 'react-router-dom'
 import config from '../../../config.json'
 import { AuthContext } from '../../contexts/authContext'
-
+import getLoginUrl from '../../../helpers/getLoginUrl'
 
 type Props = {}
 
@@ -19,12 +19,12 @@ function Callback({ }: Props) {
     const code = queryParams.get('code');
 
     if (!code) {
-      window.location.href = config.LOGIN_URL
+      window.location.href = getLoginUrl()
     } else {
       const getAccessToken = async (code: string) => {
         const req = await fetch(`${config.API_URL}/callback?code=${code}`, { method: 'POST' })
         if(req.status !== 200){
-          window.location.href = config.LOGIN_URL
+          window.location.href = getLoginUrl()
         } else {
           const res = await req.json()
           setAccessToken(res.access_token)

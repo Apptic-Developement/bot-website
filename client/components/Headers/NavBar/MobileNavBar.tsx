@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { navRoutes } from "../../../helpers/navRoutes";
 import { useState } from "react";
 import { AiFillCaretDown, AiOutlineClose } from "react-icons/ai";
@@ -9,12 +9,14 @@ import { IoMdExit } from "react-icons/io";
 import { FiServer } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
 import AppticLogo from '/src/assets/logo/logo.png';
+import { AuthContext } from "../../../src/contexts/authContext";
+import getLoginUrl from "../../../helpers/getLoginUrl";
 
 
 
 const MobileScreenNav = () => {
     const [isOpen, toggleNav] = useState(false);
-
+    const {accessToken, user} = useContext(AuthContext);
     const nonActiveCss = "hover:bg-ancent-black p-1 rounded-md"
     const ActiveCss = "bg-dark-blurple p-1 rounded-md"
     return (
@@ -37,7 +39,7 @@ const MobileScreenNav = () => {
                     {
                         isOpen ? (
                             <motion.aside initial={{ width: 0 }}
-                                animate={{ width: '90%' }} className='fixed z-10 bg-dark-black shadow-md shadow-dark-black top-0 right-0 h-screen p-6'>
+                                animate={{ width: '90%' }} className='overflow-scroll fixed z-10 bg-dark-black shadow-md shadow-dark-black top-0 right-0 h-screen p-6'>
                                 {/* Branding */}
                                 <div className='mt-3 flex items-center w-full justify-between'>
                                     <h1 className="font-bold text-xl">Apptic</h1>
@@ -49,19 +51,23 @@ const MobileScreenNav = () => {
                                     {
                                         navRoutes.map((route, index) => {
                                             return <NavLink
-                                            onClick={() => {isOpen ? toggleNav(false) : null }}
-                                            to={route.path}
-                                            key={index}
-                                            className={(navData) => (navData.isActive ? ActiveCss : nonActiveCss)}
+                                                onClick={() => { isOpen ? toggleNav(false) : null }}
+                                                to={route.path}
+                                                key={index}
+                                                className={(navData) => (navData.isActive ? ActiveCss : nonActiveCss)}
                                             >{route.name}</NavLink>
                                         })
                                     }
                                 </ul>
 
                                 {/* Login And Avatar */}
-                                {/* <LognButton/> */}
                                 <div className="flex w-full">
-                                    <Profile />
+                                    {
+                                        accessToken && user ? (
+                                            <Profile />
+                                        ) : <LoginButton />
+
+                                    }
                                 </div>
                             </motion.aside>
                         )
@@ -77,16 +83,16 @@ const MobileScreenNav = () => {
 export default MobileScreenNav;
 
 
-const LognButton = () => {
+const LoginButton = () => {
     return (
-        <div className='mt-6'>
+        <div onClick={() => { window.location.assign(getLoginUrl())}} typeof='button' className='mt-6'>
             <div className="px-4 py-2 gap-2 bg-light-blurple rounded-md hover:bg-dark-blurple hover:opacity-95 transition-all duration-300 flex items-center justify-center">
                 <div className="text-xl">
                     <FaDiscord />
                 </div>
-                <button onClick={() => { alert('Not Implimented!') }} className='font-semibold'>
+                <strong className='font-semibold'>
                     Login
-                </button>
+                </strong>
             </div>
 
         </div>
@@ -109,7 +115,7 @@ const Profile = () => {
                     <ul className="absolute bg-ancent-black shadow-lg flex flex-col items-start px-3 py-2 w-full gap-2">
                         <li className={`flex items-center gap-2 justify-center`}>
                             <FaUser />
-                            <NavLink to={'/'} className={hoverLinks}>Profile</NavLink>
+                            <NavLink to={'/profile'} className={hoverLinks}>Profile</NavLink>
                         </li>
                         <li className={`flex items-center gap-2 justify-center`}>
                             <FiServer className="text-white" />
@@ -117,7 +123,7 @@ const Profile = () => {
                         </li>
                         <li className={`flex items-center gap-2 justify-center text-red-700`}>
                             <IoMdExit />
-                            <NavLink to={'/'} className={hoverLinks}>Logout</NavLink>
+                            <NavLink to={'/logout'} className={hoverLinks}>Logout</NavLink>
                         </li>
                     </ul>
                 ) : null

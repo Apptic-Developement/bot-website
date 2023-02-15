@@ -1,8 +1,9 @@
 from typing import Literal, Union
-from httpx import AsyncClient
+from httpx import AsyncClient, Response
 from models import ExchangeCode
 from models import User
 import configs
+from .errors import InvalidExchangeCode, Unauthorized
 
 __all__ = (
     "Client",
@@ -25,10 +26,15 @@ class Client:
         headers = {"Authorization": f"Bearer {token}"}
         if method == 'GET':
             async with self.session() as session:
-                res = await session.get(self.api_endpoint+route)
-                if res.status_code != 200:
-                    return None
-                return res.json()
+                res: Response = await session.get(self.api_endpoint+route, headers=headers)
+                if res.status_code == 200:
+                    return res.json()
+                
+                if res.status_code == 401:
+                    raise Unauthorized()
+                
+                
+                
             
 
     async def get_access_token(self, code: str) -> Union[ExchangeCode, None]:
@@ -45,8 +51,7 @@ class Client:
         async with self.session() as session:
             res = await session.post(self.api_endpoint+self.token_url, data=data, headers=headers)
             if res.status_code != 200:
-                print(res.json())
-                return None
+                raise InvalidExchangeCode()
         return ExchangeCode(**res.json())
 
     async def fetch_user(self, access_token: str) -> Union[User, None]:

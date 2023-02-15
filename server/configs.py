@@ -16,4 +16,4 @@ USER_ENDPOINT = "/users/@me"
 ##############################
 CLIENT_ID = '1070374441135116310'
 CLIENT_SECRET = 'bhQojrkBD0lvkUksZxxya3pwVbcU9o10'
-REDIRECT_URL = "https://5173-appticdevelopem-website-jlqpxm29lfg.ws-us86.gitpod.io/callback"
+REDIRECT_URL = "https://5173-appticdevelopem-website-jlqpxm29lfg.ws-us87.gitpod.io/callback"

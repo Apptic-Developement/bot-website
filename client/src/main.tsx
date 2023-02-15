@@ -7,6 +7,9 @@ import Home from './views/Home';
 import Commands from './views/Commands';
 import Callback from './views/Auth/callback';
 import Login from './views/Auth/login';
+import Logout from './views/Auth/logout';
+import UserProfile from './views/Profile';
+import { ProtectedRoute } from './contexts/authContext';
 
 const routes = createBrowserRouter([
   {
@@ -28,13 +31,21 @@ const routes = createBrowserRouter([
       {
         path: '/login',
         element: <Login />
-      }
+      },
+      {
+        path: '/logout',
+        element: <Logout />
+      },
+      {
+        path: '/profile',
+        element: <ProtectedRoute><UserProfile /></ProtectedRoute>
+      },
     ]
   }
 ])
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={routes}/>
+    <RouterProvider router={routes} />
   </React.StrictMode>,
 )
