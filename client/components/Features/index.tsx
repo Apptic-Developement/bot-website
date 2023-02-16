@@ -2,7 +2,7 @@ import React from 'react';
 import { Features } from './features';
 const FeaturesSection = () => {
     return (
-        <section id="features" className='w-full flex items-center justify-center bg-dark-black '>
+        <section id="features" className='w-full flex items-center justify-center bg-dark-black'>
             <div className='flex md:flex-row flex-col container px-4 mx-auto my-4 py-4 w-full gap-2 justify-center'>
                 <div className='flex flex-col'>
                     <div className='bg-light-black text-dark-blurple px-3 py-2 w-fit rounded-2xl'>
@@ -17,7 +17,7 @@ const FeaturesSection = () => {
                     {
                         Features.map((feature, index) => {
                             return (
-                                <div className='bg-ancent-black md:w-44 px-4 py-4 flex flex-col justify-center rounded-lg w-auto'>
+                                <div className='bg-ancent-black md:w-60 px-4 py-4 flex flex-col justify-center rounded-lg w-auto'>
                                     <div className='text-light-blurple text-2xl mb-5'>
                                         {feature.icon}
                                     </div>

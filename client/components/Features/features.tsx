@@ -30,4 +30,14 @@ export const Features: Array<Feature> = [
         name: 'Role Menu',
         description: 'The best of the world is this ok hmm but no role is ok.'
     },
+    {
+        icon: <BsMenuButtonWide />,
+        name: 'Role Menu',
+        description: 'The best of the world is this ok hmm but no role is ok.'
+    },
+    {
+        icon: <BsMenuButtonWide />,
+        name: 'Role Menu',
+        description: 'The best of the world is this ok hmm but no role is ok.'
+    },
 ]
