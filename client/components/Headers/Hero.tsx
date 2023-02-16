@@ -25,10 +25,11 @@ const Hero = () => {
 
                     <div className="flex items-center justify-center gap-1 text-sm font-medium bg-gradient-to-br hover:bg-gradient-to-bl rounded-3xl px-5 py-2.5 text-center mr-2 mb-2">
                         <AiFillCaretDown className="text-2xl" />
-                        <button
+                        <a  
+                            href="#features"
                             type="button">
                             See features
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

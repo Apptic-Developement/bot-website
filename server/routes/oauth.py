@@ -13,6 +13,6 @@ async def callback_route(code: str):
 
 @router.get('/me')
 async def me_route(req: Request):
-    user = await client.fetch_user(req.headers.get("token"))
+    user = await client.fetch_user(req.headers.get("token")) 
     return user
 
