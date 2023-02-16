@@ -4,22 +4,33 @@ from routes import (
     oauth
 )
 from fastapi.middleware.cors import CORSMiddleware
-import configs
+from sockets import asgi_app, sio
 from oauth.errors import InvalidExchangeCode, Unauthorized
 
-
 app = FastAPI()
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+app.mount('/ws', asgi_app)
+
+commands = []
+
+
+
+@sio.event
+async def connect(sid, environ, auth):
+    await sio.emit("command_request")
+
+@sio.on("recive_commands")
+async def on_recive_commands(_, cmd):
+    commands.append(cmd)
+
 
 @app.get('/')
 async def home():
     return "Working 😌"
+
+
+@app.get('/commands')
+async def commands_route():
+    return commands[0]
 
 @app.exception_handler(Unauthorized)
 async def unauthorized_Error(req: Request, exc: Unauthorized):
@@ -39,3 +50,10 @@ async def invalid_Exc_Error(req: Request, exc: InvalidExchangeCode):
 
 app.include_router(router=oauth.router)
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)

@@ -15,4 +15,3 @@ async def callback_route(code: str):
 async def me_route(req: Request):
     user = await client.fetch_user(req.headers.get("token")) 
     return user
-
