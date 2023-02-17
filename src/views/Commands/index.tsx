@@ -130,7 +130,7 @@ const CommandBox = ({ name, description }: CommandType) => {
           <h2 className='font-medium'>{name}</h2>
         </div>
         <div>
-          <FiArrowDown className={isOpen ? 'rotate-0' : 'rotate-180'}/>
+          <FiArrowDown className={isOpen ? 'rotate-0' : 'rotate-180'} />
         </div>
       </div>
 
