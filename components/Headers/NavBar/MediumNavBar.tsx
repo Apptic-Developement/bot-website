@@ -13,7 +13,7 @@ import getLoginUrl from '../../../helpers/getLoginUrl';
 
 const MediumNavBar = () => {
     const ActiveCss = `hover:!border-b-4 border-b-transparent hover:!border-light-blurple !border-light-blurple !border-b-4 duration-300 transation-all`;
-    const nonActiveCss = `hover:!border-b-4 border-b-transparent hover:!border-light-blurple duration-300 transation-all`;
+    const nonActiveCss = `border-b-4 border-light-black hover:!border-light-blurple duration-300 transation-all`;
     const { accessToken, user } = useContext(AuthContext);
     return (
         <>

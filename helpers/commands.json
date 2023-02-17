@@ -1,0 +1,207 @@
+[
+
+    {
+        "category": "All",
+        "commands": []
+    },
+    {
+        "category": "Configurations",
+        "commands": [
+            {
+                "name": "config",
+                "description": "Command for managing and adjusting various settings and preferences for the server."
+            },
+            {
+                "name": "config welcome",
+                "description": "Configure awesome welcome messages in your server."
+            },
+            {
+                "name": "config welcome enable",
+                "description": "Enable the welcome plugin for this server."
+            },
+            {
+                "name": "config welcome disable",
+                "description": "Disable the welcome plugin for this server."
+            },
+            {
+                "name": "config welcome toggle",
+                "description": "Toggles Enable/Disable the welcome modes."
+            },
+            {
+                "name": "config welcome set_message",
+                "description": "Set the welcome message."
+            },
+            {
+                "name": "config welcome test",
+                "description": "Test the welcome message."
+            },
+            {
+                "name": "config leave",
+                "description": "Configure awesome leave messages in your server."
+            },
+            {
+                "name": "config leave enable",
+                "description": "Enable the leave message plugin for this server."
+            },
+            {
+                "name": "config leave disable",
+                "description": "Disable the leave message plugin for this server."
+            },
+            {
+                "name": "config leave toggle",
+                "description": "Toggles Enable/Disable the leave message modes."
+            },
+            {
+                "name": "config leave set_message",
+                "description": "Set the leave message."
+            },
+            {
+                "name": "config leave test",
+                "description": "Test the leave message."
+            },
+            {
+                "name": "config autorole",
+                "description": "Configure unlimited autoroles in your server."
+            },
+            {
+                "name": "config autorole add",
+                "description": "Add a role to (humans/bots) autorole list."
+            },
+            {
+                "name": "config autorole remove",
+                "description": "Remove a role from (humans/bots) autorole list."
+            },
+            {
+                "name": "config mod_response",
+                "description": "Customize moderation response messages."
+            }
+        ]
+    },
+    {
+        "category": "Giveaway",
+        "commands": [
+            {
+                "name": "giveaway",
+                "description": "Configure awesome giveaways in your server."
+            },
+            {
+                "name": "giveaway start",
+                "description": "Starts a new giveaway."
+            },
+            {
+                "name": "giveaway reroll",
+                "description": "Picks a new winner from the specified giveaway."
+            },
+            {
+                "name": "giveaway end",
+                "description": "Ends a running giveaway."
+            },
+            {
+                "name": "giveaway show",
+                "description": "Shows a list of running giveaways."
+            }
+        ]
+    },
+    {
+        "category": "Selfroles",
+        "commands": [
+            {
+                "name": "rolemenu role",
+                "description": "Add/Remove a role from rolemenu."
+            },
+            {
+                "name": "rolemenu role add",
+                "description": "Adds a new role to a existing rolemenu."
+            },
+            {
+                "name": "rolemenu role remove",
+                "description": "Removes a role from a existing rolemenu."
+            },
+            {
+                "name": "rolemenu create",
+                "description": "Creates a new rolemenu."
+            },
+            {
+                "name": "rolemenu delete",
+                "description": "Delete a rolemenu."
+            },
+            {
+                "name": "rolemenu edit",
+                "description": "Edits a rolemenu component."
+            },
+            {
+                "name": "rolemenu edit-placeholder",
+                "description": "Edits a dropdown role-menu's placeholder."
+            },
+            {
+                "name": "rolemenu edit-role-limit",
+                "description": "Edit the rolemenu's max role limit."
+            }
+        ]
+    },
+    {
+        "category": "Utility",
+        "commands": [
+            {
+                "name": "messages",
+                "description": "Get server messages stats"
+            },
+            {
+                "name": "messages reset",
+                "description": "Reset user/server messages"
+            },
+            {
+                "name": "messages reset user",
+                "description": "Reset all messages of a user."
+            },
+            {
+                "name": "messages reset server",
+                "description": "Reset all messages of this server."
+            },
+            {
+                "name": "messages total",
+                "description": "Shows the total messages sended by all user."
+            },
+            {
+                "name": "messages leaderboard",
+                "description": "Shows message leaderboard."
+            },
+            {
+                "name": "messages user",
+                "description": "Shows the amount of messages sent by the user."
+            },
+            {
+                "name": "afk",
+                "description": "Away from keyboard."
+            },
+            {
+                "name": "afk set",
+                "description": "Set an afk message to let people who ping you know what you're up to."
+            },
+            {
+                "name": "afk list",
+                "description": "Shows a list of afk users."
+            },
+            {
+                "name": "embed",
+                "description": "Create, edit, post awesome embeds."
+            },
+            {
+                "name": "embed create",
+                "description": "Create, and post an embed message."
+            },
+            {
+                "name": "embed edit",
+                "description": "Edit embeds which sent by apptic bot."
+            },
+            {
+                "name": "ping",
+                "description": "Shows the bot's latencies."
+            },
+            {
+                "name": "help",
+                "description": "Get a list of commands."
+            }
+        ]
+    }
+]
