@@ -1,6 +1,5 @@
 import React, { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import config from '../../config.json';
-import axios from 'axios';
 import getLoginUrl from "../../helpers/getLoginUrl";
 interface User {
     username: string;
