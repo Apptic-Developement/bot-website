@@ -50,7 +50,7 @@ function Commands() {
 
       {/* Search Bar */}
 
-      <section className='w-full'>
+      {/* <section className='w-full'>
         <div className='w-full flex bg-ancent-black border-dark-black border px-4 py-2 rounded-md mt-5'>
           <input
             className='bg-transparent border-none focus:outline-none '
@@ -59,9 +59,10 @@ function Commands() {
             id="search_commands"
             autoComplete='off'
             placeholder='Search for command 🔍'
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => (handleSearch(event))}
           />
         </div>
-      </section>
+      </section> */}
 
       {/* Commands Buttons */}
       <section className="flex flex-wrap mt-4 w-full gap-2 justify-center">
