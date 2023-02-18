@@ -2,6 +2,8 @@ import React, { MouseEventHandler, useState } from 'react'
 import commands from '../../../helpers/commands.json'
 import { BsFillSlashSquareFill } from 'react-icons/bs';
 import { FiArrowDown } from 'react-icons/fi';
+import Loading from '../../../components/Loading/Loading';
+
 
 type CommandType = {
   name: string;
@@ -17,6 +19,20 @@ function Commands() {
   const [getCommands, setCommands] = useState<Array<CommandsType>>(commands);
   const [getActiveCategory, setActiveCategory] = useState('All');
 
+  function handleSearch(input: string): void {
+    const filteredCommands = commands.reduce((acc: Array<CommandsType>, command) => {
+      const matchedCommands = command.commands.filter(cmd =>
+        cmd.name.toLowerCase().includes(input.toLowerCase())
+      );
+      if (matchedCommands.length > 0) {
+        acc.push({ category: command.category, commands: matchedCommands });
+      }
+      return acc;
+    }, []);
+    setCommands(filteredCommands);
+  }
+  
+  
 
   const handleCommandChange = (name: string) => {
     setActiveCategory(name)
@@ -50,7 +66,7 @@ function Commands() {
 
       {/* Search Bar */}
 
-      {/* <section className='w-full'>
+      <section className='w-full'>
         <div className='w-full flex bg-ancent-black border-dark-black border px-4 py-2 rounded-md mt-5'>
           <input
             className='bg-transparent border-none focus:outline-none '
@@ -59,10 +75,10 @@ function Commands() {
             id="search_commands"
             autoComplete='off'
             placeholder='Search for command 🔍'
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => (handleSearch(event))}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => (handleSearch(event.target.value))}
           />
         </div>
-      </section> */}
+      </section>
 
       {/* Commands Buttons */}
       <section className="flex flex-wrap mt-4 w-full gap-2 justify-center">
@@ -81,11 +97,15 @@ function Commands() {
       {/* Commands */}
       <section className='flex flex-col w-full mt-5 gap-3'>
         {
-          getCommands && getCommands.map((cmds) => {
+          getCommands && getCommands.length > 0 ? (getCommands.map((cmds) => {
             return cmds && cmds.commands.map((cmd, index) => {
               return <CommandBox name={cmd.name} description={cmd.description} />
             })
-          })
+          })) : (
+            <div className='flex mx-auto h-screen'>
+              <Loading/>
+            </div>
+          )
         }
       </section>
 
