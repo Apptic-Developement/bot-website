@@ -1,5 +1,5 @@
 {
     "CLIENT_ID": "1070374441135116310",
-    "REDIRECT_URI": "https://5173-appticdevelopem-website-jlqpxm29lfg.ws-us87.gitpod.io/callback",
-    "API_URL": "https://appticapi.vercel.app"
+    "REDIRECT_URI": "https://apptic.netlify.app/callback",
+    "API_URL": "https://apptic.netlify.app"
 }
