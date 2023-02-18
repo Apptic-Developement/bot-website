@@ -1,5 +1,5 @@
 {
     "CLIENT_ID": "1070374441135116310",
     "REDIRECT_URI": "https://apptic.netlify.app/auth_callback",
-    "API_URL": "https://apptic.netlify.app"
+    "API_URL": "https://appticapi.vercel.app"
 }
