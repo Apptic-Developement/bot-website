@@ -25,7 +25,7 @@ const routes = createBrowserRouter([
         element: <Commands />
       },
       {
-        path: '/callback',
+        path: '/auth_callback',
         element: <Callback />
       },
       {
