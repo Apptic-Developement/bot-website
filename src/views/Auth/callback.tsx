@@ -17,15 +17,15 @@ function Callback({ }: Props) {
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     const code = queryParams.get('code');
-    console.log("Code is ", code)
+    console.log("Code is", code)
     if (!code) {
       window.location.href = getLoginUrl()
     } else {
       const getAccessToken = async (code: string) => {
         const req = await fetch(`${config.API_URL}/callback?code=${code}`, { method: 'POST' })
         if(req.status !== 200){
-          // window.location.href = getLoginUrl()
-          console.log("Status ", req.status)
+          window.location.href = getLoginUrl()
+          console.log("Status", req.status)
           console.log(await req.json())
         } else {
           const res = await req.json()
