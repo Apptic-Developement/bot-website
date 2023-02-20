@@ -4,7 +4,6 @@ import { navRoutes } from "../../../helpers/navRoutes";
 import { useState } from "react";
 import AppticLogo from "/src/assets/logo/logo.png";
 import { AuthContext } from "../../../src/contexts/authContext";
-import config from "../../../config.json";
 import { NavLink } from "react-router-dom";
 import getLoginUrl from "../../../helpers/getLoginUrl";
 
@@ -28,17 +27,17 @@ const MediumNavBar = () => {
                     {/* Left Content */}
                     <div className="flex gap-5 items-center">
                         {/* Branding */}
-                        <div className="flex items-center justify-center">
+                        <NavLink to={'/'} className="flex items-center justify-center">
                             <img
                                 src={AppticLogo}
                                 width={70}
                                 height={70}
                                 alt={"Logo"}
                             />
-                            <h1 className="font-bold text-2xl hidden">
+                            {/* <h1 className="font-bold text-2xl">
                                 Apptic
-                            </h1>
-                        </div>
+                            </h1> */}
+                        </NavLink>
 
                         {/* Links */}
                         <ul className="flex gap-3 text-gray-500">
@@ -104,9 +103,8 @@ const Profile = () => {
                     {user?.username}#{user?.discriminator}
                 </p>
                 <AiFillCaretDown
-                    className={`${
-                        isOpen ? null : "rotate-180"
-                    } transition-all ease-in-out delay-50`}
+                    className={`${isOpen ? null : "rotate-180"
+                        } transition-all ease-in-out delay-50`}
                 />
             </button>
 

@@ -30,6 +30,7 @@
     background-color: #4a56d9;
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
+    top: 25px;
 }
 
 .hover-underline-animation:hover::after {

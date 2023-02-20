@@ -1,5 +1,5 @@
 // imports
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { navRoutes } from "../../../helpers/navRoutes";
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -23,15 +23,13 @@ const MobileScreenNav = () => {
     // classes
     const ActiveCss = "bg-dark-blurple p-1 rounded-md px-2 font-semibold";
     const nonActiveCss = "hover:bg-ancent-black p-1 rounded-md px-2";
+    
+    
     return (
         <nav className="w-full container py-4 h11 mx-auto md:hidden flex items-center justify-center">
             <div className="flex justify-between px-4 w-full">
                 {/* Branding */}
-                <div className="flex items-center">
-                    {/* <h1 className="font-bold text-xl">Apptic</h1> */}
-                    <img src={AppticLogo} width={70} height={70} alt={"Logo"} />
-                </div>
-
+                <NavLogo hidden={isOpen} />
                 {/* Links */}
                 <div className="flex items-center">
                     <button
@@ -52,10 +50,10 @@ const MobileScreenNav = () => {
                         >
                             {/* Branding */}
                             <div className="mt-3 flex items-center w-full justify-between">
-                                <div className="flex gap-1">
+                                <div className="flex gap-2 items-center">
                                     <img
                                         src={AppticLogo}
-                                        className="rounded-full w-8 h-8 border border-dark-blurple"
+                                        className="rounded-full w-8 h-8 border-2 border-dark-blurple"
                                         alt={"Logo"}
                                     />
                                     <h1 className="font-bold text-xl">
@@ -148,9 +146,8 @@ const Profile = () => {
                 />
                 <p className="font-medium">AppticUser#6696</p>
                 <AiFillCaretDown
-                    className={`${
-                        isOpen ? null : "rotate-180"
-                    } transition-all ease-in-out delay-50`}
+                    className={`${isOpen ? null : "rotate-180"
+                        } transition-all ease-in-out delay-50`}
                 />
             </button>
 
@@ -191,5 +188,29 @@ const Profile = () => {
     );
 };
 
+
+type NavLogoProps = {
+    hidden: boolean;
+}
+
+const NavLogo = ({ hidden }: NavLogoProps) => {
+    if (hidden) {
+        return (
+            <div className="flex items-center opacity-0">
+                {/* <h1 className="font-bold text-xl">Apptic</h1> */}
+                <img src={AppticLogo} width={70} height={70} alt={"Logo"} />
+            </div>
+        )
+    } else {
+
+        return (
+            <NavLink to={'/'} className="flex items-center">
+                {/* <h1 className="font-bold text-xl">Apptic</h1> */}
+                <img src={AppticLogo} width={70} height={70} alt={"Logo"} />
+            </NavLink>
+        )
+    }
+
+}
 // export
 export default MobileScreenNav;
