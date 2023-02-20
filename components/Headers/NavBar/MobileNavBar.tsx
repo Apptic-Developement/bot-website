@@ -144,7 +144,7 @@ const Profile = ({name, avatar}: ProfileProps) => {
             >
                 {/* user pfp and name  */}
                 <img
-                    className="rounded-full w-8 h-8 border border-light-blurple"
+                    className="rounded-full w-8 h-8 object-cover"
                     alt={"User profile pic"}
                     src={avatar}
                 />
