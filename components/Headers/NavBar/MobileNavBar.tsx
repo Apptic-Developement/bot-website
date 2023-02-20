@@ -95,7 +95,7 @@ const MobileScreenNav = () => {
                             {/* Login And Avatar */}
                             <div className="flex w-full">
                                 {accessToken && user ? (
-                                    <Profile />
+                                    <Profile name={user.username} avatar={user.avatar} />
                                 ) : (
                                     <LoginButton />
                                 )}
@@ -129,7 +129,11 @@ const LoginButton = () => {
 };
 
 // profile dropdown
-const Profile = () => {
+type ProfileProps = {
+    name: string;
+    avatar: string;
+}
+const Profile = ({name, avatar}: ProfileProps) => {
     const [isOpen, toggleProfile] = useState(false);
     const hoverLinks = "hover:scale-110 transation-all duration-100";
     return (
@@ -142,9 +146,9 @@ const Profile = () => {
                 <img
                     className="rounded-full w-8 h-8 border border-light-blurple"
                     alt={"User profile pic"}
-                    src="/logo.png"
+                    src={avatar}
                 />
-                <p className="font-medium">AppticUser#6696</p>
+                <p className="font-medium">{name}</p>
                 <AiFillCaretDown
                     className={`${isOpen ? null : "rotate-180"
                         } transition-all ease-in-out delay-50`}
