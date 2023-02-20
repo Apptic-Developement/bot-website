@@ -95,7 +95,7 @@ const MobileScreenNav = () => {
                             {/* Login And Avatar */}
                             <div className="flex w-full">
                                 {accessToken && user ? (
-                                    <Profile name={user.username} avatar={user.avatar} />
+                                    <Profile name={user.username} avatar={user.avatar} discriminator={user?.discriminator}/>
                                 ) : (
                                     <LoginButton />
                                 )}
@@ -132,8 +132,9 @@ const LoginButton = () => {
 type ProfileProps = {
     name: string;
     avatar: string;
+    discriminator?: string;
 }
-const Profile = ({name, avatar}: ProfileProps) => {
+const Profile = ({name, avatar, discriminator}: ProfileProps) => {
     const [isOpen, toggleProfile] = useState(false);
     const hoverLinks = "hover:scale-110 transation-all duration-100";
     return (
@@ -148,7 +149,7 @@ const Profile = ({name, avatar}: ProfileProps) => {
                     alt={"User profile pic"}
                     src={avatar}
                 />
-                <p className="font-medium">{name}</p>
+                <p className="font-medium">{name}#{discriminator}</p>
                 <AiFillCaretDown
                     className={`${isOpen ? null : "rotate-180"
                         } transition-all ease-in-out delay-50`}
