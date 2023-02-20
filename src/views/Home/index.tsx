@@ -1,16 +1,20 @@
-import React from 'react'
-import Hero from '../../../components/Headers/Hero'
-import FeaturesSection from '../../../components/Features';
+// imports
+import React from "react";
+import Hero from "../../../components/Headers/Hero";
+import FeaturesSection from "../../../components/Features";
 
-type Props = {}
+// props
+type Props = {};
 
+// home page
 function Home({}: Props) {
-  return (
-    <main>
-    <Hero/>
-    <FeaturesSection/>
-    </main>
-  )
+    return (
+        <main>
+            <Hero />
+            <FeaturesSection />
+        </main>
+    );
 }
 
-export default Home
+// export
+export default Home;
